@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
+use App\Http\Requests\StorePropertyRequest;
+use App\Http\Requests\UpdatePropertyRequest;
 
 class PropertyController extends Controller
 {
@@ -16,7 +19,7 @@ class PropertyController extends Controller
             ->allowedSorts(['nama_properti', 'harga', 'created_at'])
             ->paginate(10);
 
-        return inertia('Properties/Index', ['properties' => $properties]);
+        return inertia('Properties/Index');
     }
 
     public function show($id)
@@ -33,6 +36,14 @@ class PropertyController extends Controller
         return inertia('Properties/Form');
     }
 
+    public function store(StorePropertyRequest $request)
+    {
+        // Menggunakan form request untuk validasi
+        Property::create($request->validated());
+
+        return redirect()->route('properties.index')->with('success', 'Property created successfully.');
+    }
+
     public function edit(Property $property)
     {
         // Mengirim data properti ke Vue form saat edit
@@ -40,39 +51,11 @@ class PropertyController extends Controller
             'property' => $property
         ]);
     }
-    public function store(Request $request)
+
+    public function update(UpdatePropertyRequest $request, Property $property)
     {
-        $validated = $request->validate([
-            'id_user' => 'required|exists:users,id',
-            'nama_properti' => 'required|max:100',
-            'deskripsi' => 'required',
-            'harga' => 'required|numeric',
-            'tipe_properti' => 'required|max:50',
-            'alamat' => 'required|max:255',
-            'status_ketersediaan' => 'required|boolean',
-            'foto' => 'nullable|url|max:255'
-        ]);
-
-        Property::create($validated);
-
-        return redirect()->route('properties.index')->with('success', 'Property created successfully.');
-    }
-
-
-    public function update(Request $request, Property $property)
-    {
-        $validated = $request->validate([
-            'id_user' => 'required|exists:users,id',
-            'nama_properti' => 'required|max:100',
-            'deskripsi' => 'required',
-            'harga' => 'required|numeric',
-            'tipe_properti' => 'required|max:50',
-            'alamat' => 'required|max:255',
-            'status_ketersediaan' => 'required|boolean',
-            'foto' => 'nullable|url|max:255'
-        ]);
-
-        $property->update($validated);
+        // Menggunakan form request untuk validasi
+        $property->update($request->validated());
 
         return redirect()->route('properties.index')->with('success', 'Property updated successfully.');
     }

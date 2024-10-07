@@ -6,23 +6,24 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StorePropertyRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        // Hanya user dengan is_seller == 1 yang bisa membuat properti
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'id_user' => 'required|exists:users,id',
+            'nama_properti' => 'required|max:100',
+            'deskripsi' => 'required',
+            'harga' => 'required|numeric',
+            'tipe_properti' => 'required|max:50',
+            'alamat' => 'required|max:255',
+            'status_ketersediaan' => 'required|boolean',
+            'foto' => 'nullable|url|max:255'
         ];
     }
 }
+
