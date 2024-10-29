@@ -9,12 +9,23 @@
         "@inertiajs/vue3": "^1.0.0",
         "@tailwindcss/forms": "^0.5.3",
         "@vitejs/plugin-vue": "^5.0.0",
-        "autoprefixer": "^10.4.12",
         "axios": "^1.7.4",
         "laravel-vite-plugin": "^1.0",
-        "postcss": "^8.4.31",
-        "tailwindcss": "^3.2.1",
+        "sass-embedded": "^1.80.3",
         "vite": "^5.0",
         "vue": "^3.4.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.6.0",
+        "@fortawesome/free-brands-svg-icons": "^6.6.0",
+        "@fortawesome/free-regular-svg-icons": "^6.6.0",
+        "@fortawesome/free-solid-svg-icons": "^6.6.0",
+        "@fortawesome/vue-fontawesome": "^3.0.8",
+        "animate.css": "^4.1.1",
+        "bootstrap": "^5.3.3",
+        "vue-final-modal": "^4.5.5",
+        "vuex": "^4.1.0",
+        "waypoints": "^4.0.1",
+        "wowjs": "^1.1.3"
     }
 }

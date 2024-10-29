@@ -8,6 +8,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 use App\Http\Requests\StorePropertyRequest;
 use App\Http\Requests\UpdatePropertyRequest;
+use Spatie\QueryBuilder\AllowedSort;
 
 class PropertyController extends Controller
 {
@@ -15,11 +16,31 @@ class PropertyController extends Controller
     {
         // Menggunakan Spatie Query Builder untuk filter dan sort
         $properties = QueryBuilder::for(Property::class)
-            ->allowedFilters(['nama_properti', 'tipe_properti', 'alamat', AllowedFilter::exact('status_ketersediaan')])
-            ->allowedSorts(['nama_properti', 'harga', 'created_at'])
+            ->with('property_specifications')
+            ->allowedFilters([
+                AllowedFilter::partial('nama_properti'),
+                AllowedFilter::partial('tipe_properti'),
+                AllowedFilter::partial('alamat'),
+                AllowedFilter::exact('status_ketersediaan'),
+                AllowedFilter::scope('luas', 'property_specifications.luas'),
+                AllowedFilter::scope('jumlah_kamar', 'property_specifications.jumlah_kamar'),
+                AllowedFilter::scope('jumlah_ruangan', 'property_specifications.jumlah_ruangan'),
+                AllowedFilter::scope('jumlah_kamar_mandi', 'property_specifications.jumlah_kamar_mandi')
+            ])
+            ->allowedSorts([
+                'nama_properti',
+                'harga',
+                'created_at',
+                'updated_at',
+                AllowedSort::field('luas', 'property_specifications.luas'),
+                AllowedSort::field('jumlah_kamar', 'property_specifications.jumlah_kamar'),
+                AllowedSort::field('jumlah_ruangan', 'property_specifications.jumlah_ruangan'),
+                AllowedSort::field('jumlah_kamar_mandi', 'property_specifications.jumlah_kamar_mandi')
+            ])
+
             ->paginate(10);
 
-        return inertia('Properties/Index');
+        return inertia('Properties/Index', $properties);
     }
 
     public function show($id)

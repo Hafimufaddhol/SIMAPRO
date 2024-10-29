@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertiesTable extends Migration
+class CreateAdminsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,9 @@ class CreatePropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('user_admin', function (Blueprint $table) {
             $table->id('id');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
-            $table->string('nama_properti', 100);
-            $table->text('deskripsi');
-            $table->decimal('harga', 10, 2);
-            $table->string('tipe_properti', 50);
-            $table->string('alamat', 255);
-            $table->boolean('status_ketersediaan')->default(1);
-            $table->string('foto', 255)->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('properties');
+        Schema::dropIfExists('admin');
     }
 }

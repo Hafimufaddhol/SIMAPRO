@@ -1,6 +1,16 @@
-import '../css/app.css';
-import './bootstrap';
 
+
+import './bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+import '../scss/bootstrap.scss'
+// import '../css/bootstrap.min.css'
+import '../css/style.css';
+import 'vue-final-modal/style.css'
+import store from './store'; // Impor Vuex store
+import { createVfm } from 'vue-final-modal';
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
@@ -19,6 +29,8 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue)
+            .use(createVfm())
+            .use(store)
             .mount(el);
     },
     progress: {

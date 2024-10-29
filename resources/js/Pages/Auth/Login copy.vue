@@ -98,8 +98,3 @@ const submit = () => {
         </form>
     </GuestLayout>
 </template>
-<style scoped>
-body{
-    background-color: blue !important;
-}
-</style>
