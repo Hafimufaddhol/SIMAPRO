@@ -28,8 +28,9 @@ const submit = () => {
 };
 </script>
 <template>
+           <div class="backgrd">
   <main class="main-content  mt-0">
-    <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;">
+    <div class="page-header align-items-start min-vh-50 pt-5 pb-10 m-3 border-radius-lg" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;">
       <span class="mask bg-gradient-dark opacity-6"></span>
       <div class="container">
         <div class="row justify-content-center">
@@ -73,7 +74,7 @@ const submit = () => {
                 <custom-input
                   id="password_confirm"
                   type="password"
-                  placeholder="Konfirmmasi Password"
+                  placeholder="Konfirmasi Password"
                   aria-label="Password confirmation"
                   v-model="form.password_confirmation"
                 />
@@ -107,11 +108,48 @@ const submit = () => {
       </div>
     </div>
   </main>
+  </div>
   <!-- <app-footer /> -->
 </template>
 <style scoped>
 /* Style background untuk header */
-.page-header {
+.main-content{
+    background-color: #fff !important;
+
+}
+.backgrd{
+    padding-top: 0.25rem !important;
+    height: 100vh;
+    background-color: #fff;
+
+}
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
+}.page-header {
   align-items: start;
   min-height: 50vh;
   padding-top: 5rem;
@@ -136,9 +174,16 @@ const submit = () => {
 }
 
 .card {
-  z-index: 0;
-  border-radius: 1rem;
-  box-shadow: 0 0.75rem 1.5rem rgba(94, 114, 228, 0.15), 0 0.375rem 0.75rem rgba(94, 114, 228, 0.06);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15);
 }
 
 .card-header {

@@ -84,7 +84,7 @@ const hasIcon = (icon) => (icon ? "input-group" : null);
             <input
                 :id="id"
                 :type="type"
-                class="form-control"
+                class="form-control mt-3"
                 :class="getClasses(size, success, error)"
                 :name="name"
                 :value="modelValue"
@@ -103,3 +103,22 @@ const hasIcon = (icon) => (icon ? "input-group" : null);
         </div>
     </div>
 </template>
+<style scoped>
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .5rem .75rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d2d6da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .5rem;
+    transition: box-shadow .15s ease, border-color .15s ease;
+}
+</style>

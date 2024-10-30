@@ -1,12 +1,11 @@
 
 
 import './bootstrap';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
 import '../scss/bootstrap.scss'
-// import '../css/bootstrap.min.css'
+import '../css/bootstrap.min.css'
 import '../css/style.css';
 import 'vue-final-modal/style.css'
 import store from './store'; // Impor Vuex store
